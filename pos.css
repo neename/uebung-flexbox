@@ -15,7 +15,7 @@ h1{
 
 section{
 
-	border-bottom: 1px solid #000;
+	border-bottom: 1px solid #000; /*alle Sections haben einen schwarzen Strich*/
 }
 
 .wrapper{
@@ -28,14 +28,18 @@ section{
 	width:  100%;
 	padding: 1rem 0;
 	min-height: 300px;
-
+	display: flex;
+	justify-content: space-between; /* x-Achse*/
+	align-items: stretch;	/* y-Achse*/
 }
-
 
 .col{
 	width: 50px;
 	min-height: 50px;
-
+	flex-grow: 1; /* kann das Element wachsen, nur 0 oder 1 möglich*/
+	flex-shrink: 1; /* kann das Element wachsen, nur 0 oder 1 möglich*/
+	flex-basis: auto; /* auch Pixelwerte möglich*/
+	flex: 1 1 auto; /* Kurzschreibweise für grow, shrink und basis, s.o.*/
 }
 
 .trolley-grey{
@@ -44,8 +48,49 @@ section{
 
 .sea-green{
 	background: #2D93AD;
+	order: -2;
 }
 
 .middle-red{
 	background: #DE8F6E;
+	order: -3;
+}
+
+.black{
+	background: #000;
+}
+
+.yellow{
+background: yellow;
+order: +1;
+}
+
+.red{
+background: red;
+}
+
+#einhorn{
+	display: block;
+	position: absolute; /*Ebene*/
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+
+	height: 150px;
+}
+
+
+/* Media Querie ab 1024px */
+@media (min-width: 64em) { /* 1024:16 (1rem)*/
+		.row.quer{
+			flex-direction: column;
+			align-items: stretch;
+			justify-content: center;
+			position: relative;
+		}
+
+		.col-xl{
+			flex: 1 1 100%;
+			width: 100%;
+		}
 }
